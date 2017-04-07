@@ -36,8 +36,8 @@ use booksea\mappers\BookMapper;
         public function getBook($idbook)
         {
             $obtainedData = $this->bookMapper->getBookById($idbook);
-            if (count($obtainedData) < 1) throw new ElementNotFoundException("The book does not exist");
-            return $obtainedData[0];
+            if (is_null($obtainedData)||!$obtainedData) throw new ElementNotFoundException("The book does not exist");
+            return $obtainedData;
         }
 
         public function addBook($title, $author, $date)

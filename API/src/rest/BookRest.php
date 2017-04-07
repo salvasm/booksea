@@ -1,6 +1,8 @@
 <?php
 
 use booksea\controllers\BookCntr;
+use \Slim\Http\Response;
+use \Slim\Http\Request;
 
 $app->get('/getBooks', 'getBooks');
 $app->post('/addBook', 'addBook');
@@ -8,39 +10,56 @@ $app->put('/updateBook', 'updateBook');
 $app->put('/removeBook', 'removeBook');
 $app->get('/getBookDetails/{idbook}', 'getBookDetails');
 
-function getBooks($request, $response, $args)
+function getBooks(Request $request, Response $response)
 {
-    $cntr = new BookCntr();
-    $books = $cntr->listBooks();
+    try {
+        $cntr = new BookCntr();
+        $books = $cntr->listBooks();
 
-    $response->getBody()->write(var_export($books, true));
-    return $response;
+        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode($books));
+        return $response;
+    } catch (Exception $e) {
+        $response->withHeader('Content-type', 'application/json')->withStatus(400)->getBody()->write(json_encode(array("error" => $e->getMessage())));
+        return $response;
+    }
 }
 
-function getBookDetails($request, $response, $args)
+function getBookDetails(Request $request, Response $response)
 {
-    $idbook = (int)$args['idbook'];
-    $cntr = new BookCntr();
-    $book = $cntr->getBook($idbook);
-
-    $response->getBody()->write(var_export($book, true));
-    return $response;
+    try {
+        $idbook = $request->getAttribute("idbook");
+        $cntr = new BookCntr();
+        $book = $cntr->getBook($idbook);
+        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode($book));
+        return $response;
+    } catch (Exception $e) {
+        $response->withHeader('Content-type', 'application/json')->withStatus(400)->getBody()->write(json_encode(array("error" => $e->getMessage())));
+        return $response;
+    }
 }
 
-
-function addBook($request, $response, $args)
+function addBook(Request $request, Response $response)
 {
-    $cntr = new BookCntr();
+    try {
+        $title = null;
+        $author = null;
+        $date = null;
+        $body = $request->getParsedBody();
+        if (isset($body["title"])) {
+            $title = $body["title"];
+        }
+        if (isset($body["author"])) {
+            $author = $body["author"];
+        }
+        if (isset($body["date"])) {
+            $date = new DateTime($body["date"]);
+        }
+        $cntr = new BookCntr();
+        $cntr->addBook($title, $author, $date);
+        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"insercion correcta")));
 
-    return $response
-        ->withHeader('Content-type', 'application/json')
-        ->getBody()
-        ->write(
-            json_encode(
-                $cntr->addBook(
-                    $request->getParsedBody()
-                )
-            )
-        );
-
+    } catch (Exception $e) {
+        $response->withHeader('Content-type', 'application/json')->withStatus(400)->getBody()->write(json_encode(array("error" => $e->getMessage())));
+        return $response;
+    }
 }

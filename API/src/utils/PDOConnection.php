@@ -14,7 +14,7 @@ class PDOConnection
     private static $dbhost = "localhost";
     private static $dbname = "booksea";
     private static $dbuser = "root";
-    private static $dbpass = "root";
+    private static $dbpass = "";
     private static $db_singleton = null;
     public static function getConnection()
     {

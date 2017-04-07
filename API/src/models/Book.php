@@ -24,8 +24,8 @@
          * @param integer $idbook Identificador único de libro
          * @param string $title Título del libro
          * @param string $author
-         * @param datetime $date
-         * @param datetime $modified Fecha de modificación del libro
+         * @param \DateTime $date
+         * @param \DateTime $modified Fecha de modificación del libro
          */
         public function __construct($idbook = null, $title = null, $author = null, $date = null, $modified = null)
         {
@@ -52,14 +52,14 @@
         }
 
         /**
-         * @return mixed
+         * @return string
          */
         public function getAuthor()
         {
             return $this->author;
         }
         /**
-         * @param mixed $author
+         * @param string $author
          */
         public function setAuthor($author)
         {
@@ -67,14 +67,15 @@
         }
 
         /**
-         * @return mixed
+         * @return string
          */
         public function getTitle()
         {
             return $this->title;
         }
+
         /**
-         * @param mixed $title
+         * @param string $title
          */
         public function setTitle($title)
         {
@@ -82,14 +83,14 @@
         }
 
         /**
-         * @return mixed
+         * @return \DateTime
          */
         public function getDate()
         {
             return $this->date;
         }
         /**
-         * @param mixed $date
+         * @param \DateTime $date
          */
         public function setDate($date)
         {
@@ -97,14 +98,14 @@
         }
 
         /**
-         * @return mixed
+         * @return \DateTime
          */
         public function getModified()
         {
             return $this->modified;
         }
         /**
-         * @param mixed $modified
+         * @param \DateTime $modified
          */
         public function setModified($modified)
         {
