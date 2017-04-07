@@ -1,0 +1,5 @@
+#ignore dependecies
+API/vendor/
+API/vendor/*
+data
+.idea
