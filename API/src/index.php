@@ -10,7 +10,7 @@ $app = new \Slim\App();
 include "rest/BookRest.php";
 
 $app->get('/', function (Request $request, Response $response) {
-    $response->getBody()->write("Welcome");
+    $response->getBody()->write("BookSea API 1.0.0");
     return $response;
 });
 

@@ -33,6 +33,11 @@ use booksea\mappers\BookMapper;
             return $this->bookMapper->getAllBooks();
         }
 
+        /**
+         * @param int $idbook
+         * @return array
+         * @throws ElementNotFoundException
+         */
         public function getBook($idbook)
         {
             $obtainedData = $this->bookMapper->getBookById($idbook);
@@ -45,6 +50,31 @@ use booksea\mappers\BookMapper;
             $book = new Book(null, $title, $author, $date);
             if (!($book->isComplete())) throw new IncompleteDataException("The book data is not complete");
             $this->bookMapper->saveBook($book);
+        }
+
+        /**
+         * @param int $idbook
+         */
+        public function removeBook($idbook)
+        {
+            $this->getBook($idbook);
+            $this->bookMapper->removeBook($idbook);
+        }
+
+        /**
+         * @param integer $idbook
+         * @param string $title
+         * @param string $author
+         * @param DateTime $date
+         */
+        public function updateBook($idbook, $title, $author, $date)
+        {
+            $actualBook = Book::convertDataBaseToObject($this->getBook($idbook));
+            $book = new Book($idbook, $title, $author, $date);
+
+            $actualBook->merge($book);
+            if (!($actualBook->isComplete())) throw new IncompleteDataException("The Book data is not complete");
+            $this->bookMapper->updateBook($actualBook);
         }
 
     }
