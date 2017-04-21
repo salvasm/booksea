@@ -45,9 +45,9 @@ use booksea\mappers\BookMapper;
             return $obtainedData;
         }
 
-        public function addBook($title, $author, $date)
+        public function addBook($title, $author, $year, $isbn13, $isbn10, $language, $notes, $summary, $publisher, $format, $edition, $lent)
         {
-            $book = new Book(null, $title, $author, $date);
+            $book = new Book(null, $title, $author, $year, $isbn13, $isbn10, $language, $notes, $summary, $publisher, $format, $edition, $lent);
             if (!($book->isComplete())) throw new IncompleteDataException("The book data is not complete");
             $this->bookMapper->saveBook($book);
         }

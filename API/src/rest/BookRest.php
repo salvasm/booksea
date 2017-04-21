@@ -16,7 +16,7 @@ function getBooks(Request $request, Response $response)
         $cntr = new BookCntr();
         $books = $cntr->listBooks();
 
-        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode($books));
+        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode($books, JSON_UNESCAPED_UNICODE));
         return $response;
     } catch (Exception $e) {
         $response->withHeader('Content-type', 'application/json')->withStatus(400)->getBody()->write(json_encode(array("error" => $e->getMessage())));
@@ -30,7 +30,7 @@ function getBookDetails(Request $request, Response $response)
         $idbook = $request->getAttribute("idbook");
         $cntr = new BookCntr();
         $book = $cntr->getBook($idbook);
-        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode($book));
+        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode($book, JSON_UNESCAPED_UNICODE));
         return $response;
     } catch (Exception $e) {
         $response->withHeader('Content-type', 'application/json')->withStatus(400)->getBody()->write(json_encode(array("error" => $e->getMessage())));
@@ -56,7 +56,7 @@ function addBook(Request $request, Response $response)
         }
         $cntr = new BookCntr();
         $cntr->addBook($title, $author, $date);
-        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been inserted correctly")));
+        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been inserted correctly"), JSON_UNESCAPED_UNICODE));
 
     } catch (Exception $e) {
         $response->withHeader('Content-type', 'application/json')->withStatus(400)->getBody()->write(json_encode(array("error" => $e->getMessage())));
@@ -73,7 +73,7 @@ function removeBook (Request $request, Response $response)
         }
         $cntr = new BookCntr();
         $cntr->removeBook($idbook);
-        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been removed")));
+        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been removed"), JSON_UNESCAPED_UNICODE));
     } catch (Exception $e) {
         $response->withHeader('Content-type', 'application/json')->withStatus(400)->getBody()->write(json_encode(array("error" => $e->getMessage())));
         return $response;
@@ -102,7 +102,7 @@ function updateBook (Request $request, Response $response)
         }
         $cntr = new BookCntr();
         $cntr->updateBook($idbook, $title, $author, $date);
-        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been modified correctly")));
+        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been modified correctly"), JSON_UNESCAPED_UNICODE));
     } catch (Exception $e) {
         $response->withHeader('Content-type', 'application/json')->withStatus(400)->getBody()->write(json_encode(array("error" => $e->getMessage())));
         return $response;

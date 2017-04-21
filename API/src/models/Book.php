@@ -14,26 +14,101 @@ class Book
      * @var integer $idbook Identificador único de libro
      */
     private $idbook;
+    /**
+     * @var string $title Título del libro
+     */
     private $title;
+    /**
+     * @var integer $author ID del autor (que referencia a la tabla de autores)
+     */
     private $author;
-    private $date;
-    private $modified;
-
+    /**
+     * @var \DateTime $year Año de publicación del libro
+     */
+    private $year;
+    /**
+     * @var string $isbn13 ISBN de 13 dígitos
+     */
+    private $isbn13;
+    /**
+     * @var string $isbn10 ISBN de 10 dígitos
+     */
+    private $isbn10;
+    /**
+     * @var integer $language ID del idioma (que hace refencia a la tabla de idiomas)
+     */
+    private $language;
+    /**
+     * @var string $notes Notas personales del usuario sobre el libro
+     */
+    private $notes;
+    /**
+     * @var string $summary Resumen del libro
+     */
+    private $summary;
+    //private $date;
+    /**
+     * @var \DateTime $created fecha de creación del elemento en la tabla (automático)
+     */
+    private $created;
+    /**
+     * @var \DateTime $updated fecha de modificiación del elemento en la tabla (automático)
+     */
+    private $updated;
+    /**
+     * @var string $publisher Nombre de la empresa que publicó el libro
+     */
+    private $publisher;
+    /**
+     * @var integer $format ID formato en la que el usuario posee el libro (papel, pdf, etc.)
+     *
+     */
+    private $format;
+    /**
+     * @var string $edition Edición del libro (primera, segunda...)
+     */
+    private $edition;
+    /**
+     * @var boolean $lent Booleano, 1 = libro prestado por el usuario; 0 = libro no prestado (valor por defecto)
+     */
+    private $lent;
 
     /**
-     * @param integer $idbook Identificador único de libro
-     * @param string $title Título del libro
-     * @param string $author
-     * @param \DateTime $date
-     * @param \DateTime $modified Fecha de modificación del libro
+     * Book constructor.
+     * @param integer $idbook
+     * @param string $title
+     * @param integer $author
+     * @param $year
+     * @param string $isbn13
+     * @param string $isbn10
+     * @param integer $language
+     * @param $notes
+     * @param $summary
+     * @param \DateTime $created
+     * @param \DateTime $updated
+     * @param string $publisher
+     * @param integer $format
+     * @param string $edition
+     * @param boolean $lent
      */
-    public function __construct($idbook = null, $title = null, $author = null, $date = null, $modified = null)
-    {
+    public function __construct($idbook = null, $title = null, $author = null, $year = null, $isbn13 = null,
+                                $isbn10 = null, $language = null, $notes = null, $summary = null, $created = null,
+                                $updated = null, $publisher = null, $format = null, $edition = null, $lent = null ) {
         $this->setIdBook($idbook);
         $this->setTitle($title);
         $this->setAuthor($author);
-        $this->setDate($date);
-        $this->setModified($modified);
+        $this->setYear($year);
+        $this->setIsbn13($isbn13);
+        $this->setIsbn10($isbn10);
+        $this->setLanguage($language);
+        $this->setNotes($notes);
+        $this->setSummary($summary);
+        $this->setCreated($created);
+        $this->setUpdated($updated);
+        $this->setPublisher($publisher);
+        $this->setFormat($format);
+        $this->setEdition($edition);
+        $this->setLent($lent);
     }
 
     /**
@@ -55,22 +130,6 @@ class Book
     /**
      * @return string
      */
-    public function getAuthor()
-    {
-        return $this->author;
-    }
-
-    /**
-     * @param string $author
-     */
-    public function setAuthor($author)
-    {
-        $this->author = $author;
-    }
-
-    /**
-     * @return string
-     */
     public function getTitle()
     {
         return $this->title;
@@ -85,35 +144,211 @@ class Book
     }
 
     /**
+     * @return int
+     */
+    public function getAuthor()
+    {
+        return $this->author;
+    }
+
+    /**
+     * @param int $author
+     */
+    public function setAuthor($author)
+    {
+        $this->author = $author;
+    }
+
+    /**
      * @return \DateTime
      */
-    public function getDate()
+    public function getYear()
     {
-        return $this->date;
+        return $this->year;
     }
 
     /**
-     * @param \DateTime $date
+     * @param \DateTime $year
      */
-    public function setDate($date)
+    public function setYear($year)
     {
-        $this->date = $date;
+        $this->year = $year;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsbn13()
+    {
+        return $this->isbn13;
+    }
+
+    /**
+     * @param string $isbn13
+     */
+    public function setIsbn13($isbn13)
+    {
+        $this->isbn13 = $isbn13;
+    }
+
+    /**
+     * @return string
+     */
+    public function getIsbn10()
+    {
+        return $this->isbn10;
+    }
+
+    /**
+     * @param string $isbn10
+     */
+    public function setIsbn10($isbn10)
+    {
+        $this->isbn10 = $isbn10;
+    }
+
+    /**
+     * @return int
+     */
+    public function getLanguage()
+    {
+        return $this->language;
+    }
+
+    /**
+     * @param int $language
+     */
+    public function setLanguage($language)
+    {
+        $this->language = $language;
+    }
+
+    /**
+     * @return string
+     */
+    public function getNotes()
+    {
+        return $this->notes;
+    }
+
+    /**
+     * @param string $notes
+     */
+    public function setNotes($notes)
+    {
+        $this->notes = $notes;
+    }
+
+    /**
+     * @return string
+     */
+    public function getSummary()
+    {
+        return $this->summary;
+    }
+
+    /**
+     * @param string $summary
+     */
+    public function setSummary($summary)
+    {
+        $this->summary = $summary;
     }
 
     /**
      * @return \DateTime
      */
-    public function getModified()
+    public function getCreated()
     {
-        return $this->modified;
+        return $this->created;
     }
 
     /**
-     * @param \DateTime $modified
+     * @param \DateTime $created
      */
-    public function setModified($modified)
+    public function setCreated($created)
     {
-        $this->modified = $modified;
+        $this->created = $created;
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getUpdated()
+    {
+        return $this->updated;
+    }
+
+    /**
+     * @param \DateTime $updated
+     */
+    public function setUpdated($updated)
+    {
+        $this->updated = $updated;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPublisher()
+    {
+        return $this->publisher;
+    }
+
+    /**
+     * @param string $publisher
+     */
+    public function setPublisher($publisher)
+    {
+        $this->publisher = $publisher;
+    }
+
+    /**
+     * @return int
+     */
+    public function getFormat()
+    {
+        return $this->format;
+    }
+
+    /**
+     * @param int $format
+     */
+    public function setFormat($format)
+    {
+        $this->format = $format;
+    }
+
+    /**
+     * @return string
+     */
+    public function getEdition()
+    {
+        return $this->edition;
+    }
+
+    /**
+     * @param string $edition
+     */
+    public function setEdition($edition)
+    {
+        $this->edition = $edition;
+    }
+
+    /**
+     * @return bool
+     */
+    public function getLent()
+    {
+        return $this->lent;
+    }
+
+    /**
+     * @param bool $lent
+     */
+    public function setLent($lent)
+    {
+        $this->lent = $lent;
     }
 
     /**
@@ -122,7 +357,10 @@ class Book
     public function isComplete()
     {
         return (!is_null($this->getTitle()) &&
-            !is_null($this->getAuthor()));
+                !is_null($this->getAuthor()) &&
+                !is_null($this->getLanguage()) &&
+                !is_null($this->getLent())
+               );
     }
 
     /**
@@ -137,7 +375,18 @@ class Book
             $data['idbook'],
             $data['title'],
             $data['author'],
-            $data['date']
+            $data['year'],
+            $data['isbn13'],
+            $data['isbn10'],
+            $data['language'],
+            $data['notes'],
+            $data['summary'],
+            $data['created'],
+            $data['updated'],
+            $data['publisher'],
+            $data['format'],
+            $data['edition'],
+            $data['lent']
         );
     }
 
@@ -148,7 +397,7 @@ class Book
     {
         if (!is_null($newBook->getTitle())) $this->setTitle($newBook->getTitle());
         if (!is_null($newBook->getAuthor())) $this->setAuthor($newBook->getAuthor());
-        if (!is_null($newBook->getDate())) $this->setDate($newBook->getDate());
+        if (!is_null($newBook->getYear())) $this->setYear($newBook->getYear());
     }
 
 
