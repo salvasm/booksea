@@ -8,6 +8,8 @@ $app = new \Slim\App();
 
 // Books
 include "rest/BookRest.php";
+// Languages
+include "rest/LanguageRest.php";
 
 $app->get('/', function (Request $request, Response $response) {
     $response->getBody()->write("BookSea API 1.0.0");

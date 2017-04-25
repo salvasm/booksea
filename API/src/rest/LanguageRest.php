@@ -6,7 +6,7 @@ use \Slim\Http\Response;
 
 $app->get('/getLanguages', 'getLanguages');
 
-function getBooks(Request $request, Response $response)
+function getLanguages(Request $request, Response $response)
 {
     try {
         $cntr = new LanguageCntr();
