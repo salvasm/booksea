@@ -42,20 +42,37 @@ function addBook(Request $request, Response $response)
 {
     try {
         $title = null;
-        $author = null;
-        $date = null;
+        $author_data = null;
+        $year = null;
+        $isbn13 = null;
+        $isbn10 = null;
+        $language = null;
+        $notes = null;
+        $summary = null;
+        $publisher = null;
+        $format = null;
+        $edition = null;
+        $lent = null;
         $body = $request->getParsedBody();
+
         if (isset($body["title"])) {
             $title = $body["title"];
         }
-        if (isset($body["author"])) {
-            $author = $body["author"];
+        if (isset($body["author_data"])) {
+            $author_data = $body["author_data"];
         }
-        if (isset($body["date"])) {
-            $date = new DateTime($body["date"]);
+        if (isset($body["year"])) {
+            $year = $body["year"];
         }
+        if (isset($body["language"])) {
+            $language = $body["language"];
+        }
+        if (isset($body["lent"])) {
+            $lent = $body["lent"];
+        }
+        //$response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode($body));
         $cntr = new BookCntr();
-        $cntr->addBook($title, $author, $date);
+        $cntr->addBook($title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $publisher, $format, $edition, $lent);
         $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been inserted correctly"), JSON_UNESCAPED_UNICODE));
 
     } catch (Exception $e) {

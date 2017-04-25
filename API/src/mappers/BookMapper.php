@@ -43,32 +43,32 @@ class BookMapper extends Mapper
     public function saveBook($book)
     {
         $title = $book->getTitle();
-        $author = $book->getAuthor();
+        $author_data = $book->getAuthorData();
         $year = $book->getYear();
         $isbn13 = $book->getIsbn13();
         $isbn10 = $book->getIsbn10();
         $language = $book->getLanguage();
         $notes = $book->getNotes();
         $summary = $book->getSummary();
+        $updated = $book->getUpdated();
         $publisher = $book->getPublisher();
         $format = $book->getFormat();
         $edition = $book->getEdition();
         $lent = $book->getLent();
 
-        //$date = $book->getDate()->format("Y-m-d");
-
-        $sql = "INSERT INTO book (title, author_data, year, isbn13, isbn10, language, notes, summary, publisher, format, edition, lent)
-                VALUES (:title, :author, :year, :isbn13, :isbn10, :language, :notes, :summary, :publisher, :format, :edition, :lent)";
+        $sql = "INSERT INTO book (title, author_data, year, isbn13, isbn10, language, notes, summary, updated, publisher, format, edition, lent) 
+                VALUES (:title, :author_data, :year, :isbn13, :isbn10, :language, :notes, :summary, :updated, :publisher, :format, :edition, :lent)";
 
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(":title", $title);
-        $stmt->bindParam(":author", $author);
+        $stmt->bindParam(":author_data", $author_data);
         $stmt->bindParam(":year", $year);
         $stmt->bindParam(":isbn13", $isbn13);
         $stmt->bindParam(":isbn10", $isbn10);
         $stmt->bindParam(":language", $language);
         $stmt->bindParam(":notes", $notes);
         $stmt->bindParam(":summary", $summary);
+        $stmt->bindParam(":updated", $updated);
         $stmt->bindParam(":publisher", $publisher);
         $stmt->bindParam(":format", $format);
         $stmt->bindParam(":edition", $edition);
@@ -86,14 +86,14 @@ class BookMapper extends Mapper
     {
         $idbook = $book->getIdbook();
         $title = $book->getTitle();
-        $author = $book->getAuthor();
-        $date = $book->getDate()->format("Y-m-d");
-        $sql = "UPDATE book SET title=:title, author=:author, date=:date WHERE idbook=:idbook";
+        $author = $book->getAuthorData();
+        $year = $book->getYear();
+        $sql = "UPDATE book SET title=:title, author=:author, year=:year WHERE idbook=:idbook";
         $stmt = $this->db->prepare($sql);
         $stmt->bindParam(":idbook", $idbook);
         $stmt->bindParam(":title", $title);
         $stmt->bindParam(":author", $author);
-        $stmt->bindParam(":date", $date);
+        $stmt->bindParam(":year", $year);
         $stmt->execute();
 
     }

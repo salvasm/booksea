@@ -19,11 +19,11 @@ class Book
      */
     private $title;
     /**
-     * @var integer $author ID del autor (que referencia a la tabla de autores)
+     * @var integer $author_data ID del autor (que referencia a la tabla de autores)
      */
-    private $author;
+    private $author_data;
     /**
-     * @var \DateTime $year Año de publicación del libro
+     * @var integer $year Año de publicación del libro
      */
     private $year;
     /**
@@ -46,7 +46,6 @@ class Book
      * @var string $summary Resumen del libro
      */
     private $summary;
-    //private $date;
     /**
      * @var \DateTime $created fecha de creación del elemento en la tabla (automático)
      */
@@ -77,8 +76,8 @@ class Book
      * Book constructor.
      * @param integer $idbook
      * @param string $title
-     * @param integer $author
-     * @param $year
+     * @param integer $author_data
+     * @param integer $year
      * @param string $isbn13
      * @param string $isbn10
      * @param integer $language
@@ -91,12 +90,12 @@ class Book
      * @param string $edition
      * @param boolean $lent
      */
-    public function __construct($idbook = null, $title = null, $author = null, $year = null, $isbn13 = null,
+    public function __construct($idbook = null, $title = null, $author_data = null, $year = null, $isbn13 = null,
                                 $isbn10 = null, $language = null, $notes = null, $summary = null, $created = null,
                                 $updated = null, $publisher = null, $format = null, $edition = null, $lent = null ) {
         $this->setIdBook($idbook);
         $this->setTitle($title);
-        $this->setAuthor($author);
+        $this->setAuthorData($author_data);
         $this->setYear($year);
         $this->setIsbn13($isbn13);
         $this->setIsbn10($isbn10);
@@ -144,23 +143,23 @@ class Book
     }
 
     /**
-     * @return int
+     * @return integer
      */
-    public function getAuthor()
+    public function getAuthorData()
     {
-        return $this->author;
+        return $this->author_data;
     }
 
     /**
-     * @param int $author
+     * @param integer $author_data
      */
-    public function setAuthor($author)
+    public function setAuthorData($author_data)
     {
-        $this->author = $author;
+        $this->author_data = $author_data;
     }
 
     /**
-     * @return \DateTime
+     * @return integer
      */
     public function getYear()
     {
@@ -168,7 +167,7 @@ class Book
     }
 
     /**
-     * @param \DateTime $year
+     * @param integer $year
      */
     public function setYear($year)
     {
@@ -208,7 +207,7 @@ class Book
     }
 
     /**
-     * @return int
+     * @return integer
      */
     public function getLanguage()
     {
@@ -216,7 +215,7 @@ class Book
     }
 
     /**
-     * @param int $language
+     * @param integer $language
      */
     public function setLanguage($language)
     {
@@ -304,7 +303,7 @@ class Book
     }
 
     /**
-     * @return int
+     * @return integer
      */
     public function getFormat()
     {
@@ -312,7 +311,7 @@ class Book
     }
 
     /**
-     * @param int $format
+     * @param integer $format
      */
     public function setFormat($format)
     {
@@ -357,7 +356,7 @@ class Book
     public function isComplete()
     {
         return (!is_null($this->getTitle()) &&
-                !is_null($this->getAuthor()) &&
+                !is_null($this->getAuthorData()) &&
                 !is_null($this->getLanguage()) &&
                 !is_null($this->getLent())
                );
@@ -374,7 +373,7 @@ class Book
         return new Book(
             $data['idbook'],
             $data['title'],
-            $data['author'],
+            $data['author_data'],
             $data['year'],
             $data['isbn13'],
             $data['isbn10'],
@@ -396,7 +395,7 @@ class Book
     public function merge($newBook)
     {
         if (!is_null($newBook->getTitle())) $this->setTitle($newBook->getTitle());
-        if (!is_null($newBook->getAuthor())) $this->setAuthor($newBook->getAuthor());
+        if (!is_null($newBook->getAuthorData())) $this->setAuthorData($newBook->getAuthorData());
         if (!is_null($newBook->getYear())) $this->setYear($newBook->getYear());
     }
 
