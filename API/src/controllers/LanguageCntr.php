@@ -2,7 +2,7 @@
 
 namespace booksea\controllers;
 
-use booksea\models\Language;
+//use booksea\models\Language;
 use booksea\mappers\LanguageMapper;
 
     /**
@@ -18,9 +18,12 @@ use booksea\mappers\LanguageMapper;
          */
         private $languageMapper;
 
+        /**
+         * LanguageCntr constructor.
+         */
         public function __construct()
         {
-            $this->languageMapper = new LanguageCntr();
+            $this->languageMapper = new LanguageMapper();
         }
 
         public function listLanguages()

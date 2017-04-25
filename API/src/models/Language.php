@@ -29,7 +29,7 @@ class Language
      * @param string $name
      * @param string $iso_639_1
      */
-    public function __construct($idlanguages = null, $name = null, $iso_639_1) {
+    public function __construct($idlanguages = null, $name = null, $iso_639_1 = null) {
         $this->setIdLanguages($idlanguages);
         $this->setName($name);
         $this->setIso6391($iso_639_1);
