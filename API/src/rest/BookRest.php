@@ -72,7 +72,7 @@ function addBook(Request $request, Response $response)
         }
         //$response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode($body));
         $cntr = new BookCntr();
-        $cntr->addBook($title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $publisher, $format, $edition, $lent);
+        $cntr->addBook($title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $updated, $publisher, $format, $edition, $lent);
         $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been inserted correctly"), JSON_UNESCAPED_UNICODE));
 
     } catch (Exception $e) {
