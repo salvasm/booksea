@@ -48,7 +48,7 @@ use booksea\mappers\BookMapper;
         public function addBook($title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $updated, $publisher, $format, $edition, $lent)
         {
             $book = new Book(null, $title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, null, $updated, $publisher, $format, $edition, $lent);
-            //if (!($book->isComplete())) throw new IncompleteDataException("The book data is not complete");
+            if (!($book->isComplete())) throw new IncompleteDataException("The book data is not complete");
             $this->bookMapper->saveBook($book);
         }
 
@@ -64,14 +64,26 @@ use booksea\mappers\BookMapper;
         /**
          * @param integer $idbook
          * @param string $title
-         * @param string $author
-         * @param DateTime $date
+         * @param integer $author_data
+         * @param integer $year
+         * @param string $isbn13
+         * @param string $isbn10
+         * @param integer$language
+         * @param string $notes
+         * @param string $summary
+         * @param \DateTime $updated
+         * @param string $publisher
+         * @param integer $format
+         * @param string $edition
+         * @param boolean $lent
          * @throws IncompleteDataException
+         * @internal param string $author
+         * @internal param DateTime $date
          */
-        public function updateBook($idbook, $title, $author, $date)
+        public function updateBook($idbook, $title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $updated, $publisher, $format, $edition, $lent)
         {
             $actualBook = Book::convertDataBaseToObject($this->getBook($idbook));
-            $book = new Book($idbook, $title, $author, $date);
+            $book = new Book($idbook, $title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $updated, $publisher, $format, $edition, $lent);
 
             $actualBook->merge($book);
             if (!($actualBook->isComplete())) throw new IncompleteDataException("The Book data is not complete");

@@ -1,0 +1,25 @@
+{
+  "name": "booksea",
+  "version": "1.0.0",
+  "description": "TFG Uvigo",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salvasm/booksea.git"
+  },
+  "keywords": [
+    "slim",
+    "php",
+    "angularjs",
+    "api"
+  ],
+  "author": "Salvador Sánchez Méndez",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salvasm/booksea/issues"
+  },
+  "homepage": "https://github.com/salvasm/booksea#readme"
+}

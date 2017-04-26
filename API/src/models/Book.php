@@ -397,10 +397,17 @@ class Book
         if (!is_null($newBook->getTitle())) $this->setTitle($newBook->getTitle());
         if (!is_null($newBook->getAuthorData())) $this->setAuthorData($newBook->getAuthorData());
         if (!is_null($newBook->getYear())) $this->setYear($newBook->getYear());
+        if (!is_null($newBook->getIsbn13())) $this->setIsbn13($newBook->getIsbn13());
+        if (!is_null($newBook->getIsbn10())) $this->setIsbn10($newBook->getIsbn10());
+        if (!is_null($newBook->getLanguage())) $this->setLanguage($newBook->getLanguage());
+        if (!is_null($newBook->getNotes())) $this->setNotes($newBook->getNotes());
+        if (!is_null($newBook->getSummary())) $this->setSummary($newBook->getSummary());
+        if (!is_null($newBook->getUpdated())) $this->setUpdated($newBook->getUpdated());
+        if (!is_null($newBook->getPublisher())) $this->setPublisher($newBook->getPublisher());
+        if (!is_null($newBook->getFormat())) $this->setFormat($newBook->getFormat());
+        if (!is_null($newBook->getEdition())) $this->setEdition($newBook->getEdition());
+        if (!is_null($newBook->getLent())) $this->setLent($newBook->getLent());
     }
-
-
 }
-
 
 ?>

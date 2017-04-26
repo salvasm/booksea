@@ -3,3 +3,5 @@ API/vendor/
 API/vendor/*
 data
 .idea
+node_modules
+bower_components

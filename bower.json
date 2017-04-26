@@ -1,0 +1,24 @@
+{
+  "name": "booksea",
+  "description": "TFG Uvigo",
+  "main": "index.js",
+  "authors": [
+    "Salvador Sánchez Méndez"
+  ],
+  "license": "ISC",
+  "keywords": [
+    "slim",
+    "php",
+    "angularjs",
+    "api"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
