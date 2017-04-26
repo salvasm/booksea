@@ -86,14 +86,39 @@ class BookMapper extends Mapper
     {
         $idbook = $book->getIdbook();
         $title = $book->getTitle();
-        $author = $book->getAuthorData();
+        $author_data = $book->getAuthorData();
         $year = $book->getYear();
-        $sql = "UPDATE book SET title=:title, author=:author, year=:year WHERE idbook=:idbook";
+        $isbn13 = $book->getIsbn13();
+        $isbn10 = $book->getIsbn10();
+        $language = $book->getLanguage();
+        $notes = $book->getNotes();
+        $summary = $book->getSummary();
+        $updated = $book->getUpdated();
+        $publisher = $book->getPublisher();
+        $format = $book->getFormat();
+        $edition = $book->getEdition();
+        $lent = $book->getLent();
+
+        $sql = "UPDATE book SET title=:title, author_data=:author, year=:year, isbn13=:isbn13, isbn10=:isbn10,
+                language=:language, notes=:notes, summary=:summary, updated=:updated, publisher=:publisher,
+                format=:format, edition=:edition, lent=:lent WHERE idbook=:idbook";
+
         $stmt = $this->db->prepare($sql);
+
         $stmt->bindParam(":idbook", $idbook);
         $stmt->bindParam(":title", $title);
-        $stmt->bindParam(":author", $author);
+        $stmt->bindParam(":author_data", $author_data);
         $stmt->bindParam(":year", $year);
+        $stmt->bindParam(":isbn13", $isbn13);
+        $stmt->bindParam(":isbn10", $isbn10);
+        $stmt->bindParam(":language", $language);
+        $stmt->bindParam(":notes", $notes);
+        $stmt->bindParam(":summary", $summary);
+        $stmt->bindParam(":updated", $updated);
+        $stmt->bindParam(":publisher", $publisher);
+        $stmt->bindParam(":format", $format);
+        $stmt->bindParam(":edition", $edition);
+        $stmt->bindParam(":lent", $lent);
         $stmt->execute();
 
     }
