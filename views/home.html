@@ -1,0 +1,9 @@
+<!--añadimos aquí el controlador bookCntr-->
+<div ng-controller="bookCntr">
+    <h1>MVC con AngularJS</h1>
+    <ul>
+        <li ng-repeat="nota in notas">
+            <p>Id: {{ nota.id }} Nombre: {{ nota.nombre }} Edad: {{ nota.edad }}</p>
+        </li>
+    </ul>
+</div>

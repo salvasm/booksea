@@ -1,7 +1,7 @@
 {
   "name": "booksea",
   "description": "TFG Uvigo",
-  "main": "index.js",
+  "main": "",
   "authors": [
     "Salvador Sánchez Méndez"
   ],
@@ -12,7 +12,7 @@
     "angularjs",
     "api"
   ],
-  "homepage": "",
+  "homepage": "https://github.com/salvasm/booksea",
   "private": true,
   "ignore": [
     "**/.*",
@@ -20,5 +20,12 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "angular": "^1.6.4",
+    "angular-resource": "^1.6.4",
+    "angular-route": "^1.6.4",
+    "font-awesome": "^4.7.0",
+    "bootstrap": "^3.3.7"
+  }
 }
