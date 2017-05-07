@@ -7,7 +7,7 @@ use \Slim\Http\Request;
 $app->get('/getBooks', 'getBooks');
 $app->post('/addBook', 'addBook');
 $app->put('/updateBook', 'updateBook');
-$app->put('/removeBook', 'removeBook');
+$app->put('/removeBook', 'removeBook'); // con delete trabajar igual que get
 $app->get('/getBookDetails/{idbook}', 'getBookDetails');
 
 function getBooks(Request $request, Response $response)

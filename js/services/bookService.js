@@ -1,34 +1,33 @@
+var app = angular.module("bookseaApp");
 //modelo bookService
-app.service("bookService", function(){
+app.service("bookService", ['$http', 'API', function ($http, API) {
+    return {
+        getBooks: function (onSuccess, onFail) {
+            $http({
+                url: API + '/getBooks',
+                method: "GET",
+                params: {'foobar': new Date().getTime()}
+            }).then(onSuccess, onFail);
+        },
+        getBooks2: function (onSuccess, onFail) {
+            $http({
+                url: API + '/getBooks',
+                method: "GET",
+                params: {'foobar': new Date().getTime()}
+            }).then(onSuccess, onFail);
+        }
+    };
 
-    this.getNotas = function(){
-        return [
-            {
-                id : 0,
-                nombre : "Israel Parra",
-                edad : "32 años"
-            },
-            {
-                id : 1,
-                nombre : "Andrés Cuenca",
-                edad : "24 años"
-            },
-            {
-                id : 2,
-                nombre : "Juan",
-                edad : "28 años"
-            },
-            {
-                id : 3,
-                nombre : "Pepito",
-                edad : "18 años"
-            },
-            {
-                id : 4,
-                nombre : "Manuel",
-                edad : "45 años"
-            }
-        ]
-    }
-
-});
+}]);
+//
+// var app = angular.module('experimentWeb');
+//
+// app.factory('breedingService',['$http','API',function($http,API){
+//     return{
+//         getBreedings: function(onSuccess, onFail){
+//             $http({
+//                 url: API+'/getBreedings',
+//                 method: "GET",
+//                 params: { 'foobar': new Date().getTime() }
+//             }).success(onSuccess).error(onFail);
+//         },

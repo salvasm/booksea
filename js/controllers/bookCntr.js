@@ -1,6 +1,21 @@
-app.controller("bookCntr", function($scope, bookService){
+var app = angular.module("bookseaApp");
 
-    //obtenemos todas las notas
-    $scope.notas = bookService.getNotas();
+app.controller("bookCntr", ['$scope', 'bookService', function ($scope, bookService) {
 
-})
+    $scope.getBooks = function () {
+        // obtenemos todas las notas
+        bookService.getBooks(function (response) {
+            console.log(response.data);
+            $scope.notas = response.data;
+        }, function (error) {
+            console.log(error);
+        });
+    };
+
+
+    // $scope.notas = ["uno", "dos"];
+
+
+}]);
+
+
