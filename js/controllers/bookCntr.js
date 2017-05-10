@@ -3,10 +3,10 @@ var app = angular.module("bookseaApp");
 app.controller("bookCntr", ['$scope', 'bookService', function ($scope, bookService) {
 
     $scope.getBooks = function () {
-        // obtenemos todas las notas
+        // obtenemos todas los libros
         bookService.getBooks(function (response) {
             console.log(response.data);
-            $scope.notas = response.data;
+            $scope.books = response.data;
         }, function (error) {
             console.log(error);
         });
