@@ -2,9 +2,14 @@
 <div ng-controller="bookCntr">
     <!--<h2 class="sub-header">Section title</h2>-->
     <h1 class="page-header">Books</h1>
+
+    <select ng-model="order">
+        <option value="">- Orden -</option>
+        <option value="title">Ascendente</option>
+        <option value="-title">Descendente</option>
+    </select>
+
     <div class="table-responsive">
-        <input type="text" ng-model="projectList.search" class="search-query" id="projects_search"
-               placeholder="Search">
         <table class="table table-striped" ng-init="getBooks()">
             <thead>
             <tr>
@@ -15,7 +20,7 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="book in books">
+            <tr ng-repeat="book in books|filter:search|orderBy:order">
                 <td>{{book.title}}</td>
                 <td>{{book.author_data}}</td>
                 <td>{{book.lent}}</td>

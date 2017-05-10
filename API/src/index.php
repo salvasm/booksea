@@ -2,6 +2,9 @@
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
+use booksea\controllers\JWTCntr;
+
+
 require __DIR__ . '/../vendor/autoload.php';
 
 $app = new \Slim\App();
