@@ -1,16 +1,3 @@
-// var configApp = function ($routeProvider) {
-//
-//     $routeProvider.when("/home", {
-//         controller: "bookCntr",
-//         templateUrl: "views/dashboard.html"
-//     });
-//
-// };
-//
-// //creamos el modulo y le aplicamos la configuración
-// var app = angular.module("bookseaApp", ["ngRoute"]).config(['$routeProvider', configApp]);
-//
-
 var app = angular.module('bookseaApp', ['ngRoute']);
 
 app.config(['$routeProvider', '$locationProvider' , function ($routeProvider,$locationProvider) {

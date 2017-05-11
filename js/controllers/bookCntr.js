@@ -12,10 +12,6 @@ app.controller("bookCntr", ['$scope', 'bookService', function ($scope, bookServi
         });
     };
 
-
-    // $scope.notas = ["uno", "dos"];
-
-
 }]);
 
 
