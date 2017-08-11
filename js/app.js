@@ -1,4 +1,4 @@
-var app = angular.module('bookseaApp', ['ngRoute']);
+var app = angular.module('bookseaApp', ['ngRoute', 'ui.bootstrap']);
 
 app.config(['$routeProvider', '$locationProvider' , function ($routeProvider,$locationProvider) {
     $locationProvider.hashPrefix('');

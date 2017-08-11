@@ -1,0 +1,107 @@
+<!--Edit Details Modal-->
+<div class="modal-content side-body padding-top">
+    <div ng-hide="confirm">
+        <form name="editBookForm" action="">
+            <div class="modal-header">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="sizing-addon1">Title</span>
+                    <input type="text" class="form-control" placeholder="Write a new title..."
+                           aria-describedby="sizing-addon1" value="{{title}}">
+                </div>
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span-->
+                <!--aria-hidden="true">&times;</span></button>-->
+
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <span class="label label-default"></span>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label control-label" for="author_data">Author</label>
+                                <input id="author_data" type="text" class="form-control form-book-edit"
+                                       placeholder="Author..."
+                                       aria-describedby="basic-addon1" value="{{author_data}}">
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="year">Year</label>
+                                <input id="year" type="text" class="form-control form-book-edit" placeholder="Year..."
+                                       aria-describedby="basic-addon1" value="{{year}}">
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="language">Language</label>
+                                <input id="language" type="text" class="form-control form-book-edit"
+                                       placeholder="Language..."
+                                       aria-describedby="basic-addon1" value="{{language}}">
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="format">Format</label>
+                                <input id="format" type="text" class="form-control form-book-edit"
+                                       placeholder="Publisher..."
+                                       aria-describedby="basic-addon1" value="{{format}}">
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="edition">Editon</label>
+                                <input id="edition" type="text" class="form-control form-book-edit"
+                                       placeholder="Edition..."
+                                       aria-describedby="basic-addon1" value="{{edition}}">
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="publisher">Publisher</label>
+                                <input id="publisher" type="text" class="form-control form-book-edit"
+                                       placeholder="Publisher..."
+                                       aria-describedby="basic-addon1" value="{{publisher}}">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/img/no_image.png" alt="Portada" class="img-thumbnail">
+                        <br/><br/>
+                    </div>
+                </div>
+                <div class="row" ng-show="summary != null">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Summary</div>
+                            <div class="panel-body">
+                                <textarea class="form-control" rows="3">{{ summary }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" ng-show="notes != null">
+                    <div class="col-md-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Notes</div>
+                            <div class="panel-body">
+                                <textarea class="form-control" rows="3">{{ notes }}</textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+                <!--<button type="button" class="btn btn-success" ng-click="save()">Save</button>-->
+                <button class="btn btn-success" ng-click="confirm=true">Save</button>
+
+            </div>
+        </form>
+    </div>
+
+    <!--Confirmation message-->
+    <div ng-show="confirm">
+        <div class="modal-header">
+            <h4 class="modal-title pull-left" id="confirmationTitle">Confirmation</h4>
+        </div>
+        <div class="modal-body">
+            <h5>Do you want to save changes?</h5>
+        </div>
+        <div class="modal-footer">
+            <a class="btn btn-danger" ng-click="confirm=false" role="button">Cancel</a>
+            <a class="btn btn-success" ng-click="editBook()" role="button">Confirm</span></a>
+        </div>
+    </div>
+
+</div>

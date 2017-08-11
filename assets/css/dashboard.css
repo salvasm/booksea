@@ -103,3 +103,34 @@ body {
     display: inline-block;
     border-radius: 50%;
 }
+
+
+/* Modal Book */
+.img-thumbnail {
+    width: 100%;
+}
+
+.details_label {
+    width: 25%;
+    margin-bottom: 0px;
+    padding: 10px 10px;
+    background-color: #f5f5f5;
+    color: #555;
+    text-align: right;
+    font-weight: normal;
+    border-right: 1px #ddd solid;
+}
+
+.list-group-item-edit {
+    padding: 0px;
+}
+
+.form-book-edit {
+    float: inherit;
+    width: 73%;
+    display: inline;
+}
+
+.table-last-column {
+    text-align: right;
+}

@@ -3,34 +3,62 @@
     <!--<h2 class="sub-header">Section title</h2>-->
     <h1 class="page-header">Books</h1>
 
-    <select ng-model="order">
-        <option value="">- Order -</option>
-        <option value="title">Ascendant</option>
-        <option value="-title">Descendant</option>
-    </select>
+    <form class="form-inline">
+
+            <div class="input-group col-sm-10">
+                <div class="input-group-addon"><i class="fa fa-search"></i></div>
+                <input type="text" class="form-control input-lg" placeholder="Search a book" ng-model="searchBook">
+            </div>
+        <button type="button" ng-click="addBook()" class="btn btn-primary btn-lg pull-right">
+            <span class="fa fa-plus-circle" aria-hidden="true"></span>
+            Add new book
+        </button>
+    </form>
 
     <div class="table-responsive">
         <table class="table table-striped" ng-init="getBooks()">
             <thead>
             <tr>
-                <th>Title</th>
-                <th>Author</th>
+                <th>
+                    <a href="" ng-click="sortType = 'title'; sortReverse = !sortReverse">
+                        Title
+                        <span ng-show="sortType == 'title' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'title' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
+                <th>
+                    <a href="" ng-click="sortType = 'author_data'; sortReverse = !sortReverse">
+                        Author
+                        <span ng-show="sortType == 'author_data' && !sortReverse" class="fa fa-caret-down"></span>
+                        <span ng-show="sortType == 'author_data' && sortReverse" class="fa fa-caret-up"></span>
+                    </a>
+                </th>
                 <th>Lent</th>
                 <th>Options</th>
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="book in books|filter:search|orderBy:order">
+            <tr ng-repeat="book in books | orderBy:sortType:sortReverse | filter:searchBook">
                 <td>{{book.title}}</td>
                 <td>{{book.author_data}}</td>
-                <td>{{book.lent}}</td>
-                <td>
-                    <button type="button" class="btn btn-default btn-sm btn btn-primary">
-                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                <td ng-switch on="book.lent">
+                    <span ng-switch-when="0">No</span>
+                    <span ng-switch-when="1">Yes</span>
+                    <span ng-switch-default>Unknown</span>
+                </td>
+                <td class="table-last-column">
+                    <!--Edit-->
+                    <button type="button" class="btn btn-default btn-sm btn btn-primary" ng-click="editBookDetails(book)">
+                        <span class="fa fa-pencil fa-lg" aria-hidden="true"></span>
                     </button>
-                    <a class="btn btn-primary btn-sm" ng-click="openModal('sm')" role="button">
-                        <span class="fa fa-info-circle fa-lg"></span>
-                    </a>
+                    <!--Details-->
+                    <button type="button" class="btn btn-primary btn-sm" ng-click="getBookDetails(book)">
+                        <span class="fa fa-info-circle fa-lg" aria-hidden="true"></span>
+                    </button>
+                    <!--Remove-->
+                    <button type="button" class="btn btn-danger btn-sm" ng-click="removeBook(book)">
+                        <span class="fa fa-times-circle fa-lg" aria-hidden="true"></span>
+                    </button>
                 </td>
             </tr>
             </tbody>

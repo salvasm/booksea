@@ -1,0 +1,92 @@
+<!--New Book Modal-->
+<div class="modal-content side-body padding-top">
+
+        <form name="newBookForm" action="">
+            <div class="modal-header">
+                <div class="input-group input-group-lg">
+                    <span class="input-group-addon" id="sizing-addon1">Title</span>
+                    <input ng-model="title" type="text" class="form-control" placeholder="Write a title..."
+                           aria-describedby="sizing-addon1" value="" autofocus required>
+                </div>
+                <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close" ng-click="cancel()"><span-->
+                <!--aria-hidden="true">&times;</span></button>-->
+
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-8">
+                        <span class="label label-default"></span>
+                        <ul class="list-group">
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label control-label" for="author_data">Author</label>
+                                <input ng-model="author_data" id="author_data" type="text" class="form-control form-book-edit"
+                                       placeholder="Author..."
+                                       aria-describedby="basic-addon1" value="" autofocus required>
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="year">Year</label>
+                                <input ng-model="year" id="year" type="text" class="form-control form-book-edit" placeholder="Year..."
+                                       aria-describedby="basic-addon1" value="" autofocus required>
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="language">Language</label>
+                                <input ng-model="language" id="language" type="text" class="form-control form-book-edit"
+                                       placeholder="Language..."
+                                       aria-describedby="basic-addon1" value="" autofocus required>
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="format">Format</label>
+                                <input id="format" type="text" class="form-control form-book-edit"
+                                       placeholder="Publisher..."
+                                       aria-describedby="basic-addon1" value="">
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="edition">Editon</label>
+                                <input id="edition" type="text" class="form-control form-book-edit"
+                                       placeholder="Edition..."
+                                       aria-describedby="basic-addon1" value="">
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="publisher">Publisher</label>
+                                <input id="publisher" type="text" class="form-control form-book-edit"
+                                       placeholder="Publisher..."
+                                       aria-describedby="basic-addon1" value="">
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4">
+                        <img src="assets/img/no_image.png" alt="Portada" class="img-thumbnail">
+                        <br/><br/>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Summary</div>
+                            <div class="panel-body">
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel panel-info">
+                            <div class="panel-heading">Notes</div>
+                            <div class="panel-body">
+                                <textarea class="form-control" rows="3"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="cancel()">Close</button>
+                <!--<button type="button" class="btn btn-success" ng-click="save()">Save</button>-->
+                <button class="btn btn-success" ng-click="addBook()">Save</button>
+
+            </div>
+        </form>
+
+</div>
