@@ -1,8 +1,8 @@
 var app = angular.module("bookseaApp");
 
 app.controller("bookCntr",
-    ['$scope', '$rootScope', '$location', 'bookService', '$uibModal', '$log',
-        function ($scope, $rootScope, $location, bookService, $uibModal) {
+    ['$scope', '$rootScope', '$location', 'bookService', 'authorService', '$uibModal', '$log',
+        function ($scope, $rootScope, $location, bookService, authorService, $uibModal) {
 
             $scope.sortType = 'title'; // set the default sort type
             $scope.sortReverse = false;  // set the default sort order
@@ -23,8 +23,19 @@ app.controller("bookCntr",
             // Get books
             $scope.getBooks = function () {
                 bookService.getBooks(function (response) {
-                    console.log(response.data);
                     $scope.books = response.data;
+
+                    angular.forEach($scope.books, function (book) {
+                        $scope.idauthor = book.author_data;
+
+                        authorService.getAuthorDetails($scope.idauthor, function (response) {
+                            $scope.books = response.data;
+                        });
+
+
+                    });
+                    console.log(response.data);
+
                 }, function (error) {
                     console.log(error);
                 });

@@ -9,11 +9,14 @@ app.service("authorService", ['$http', 'API', function ($http, API) {
                 params: {'foobar': new Date().getTime()}
             }).then(onSuccess, onFail);
         },
-        getAuthors2: function (onSuccess, onFail) {
+        // Obtener detalles de un libro
+        getAuthorDetails: function ($id_author, onSuccess, onFail) {
             $http({
-                url: API + '/getBooks',
+                url: API + '/getAuthorDetails',
                 method: "GET",
-                params: {'foobar': new Date().getTime()}
+                params: {
+                    idauthor: $id_author
+                }
             }).then(onSuccess, onFail);
         }
     };

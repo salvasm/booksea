@@ -3,6 +3,7 @@
 namespace booksea\controllers;
 
 //use booksea\models\Author;
+use booksea\Exceptions\ElementNotFoundException;
 use booksea\mappers\AuthorMapper;
 
 /**
@@ -30,6 +31,19 @@ class AuthorCntr
     {
         return $this->authorMapper->getAllAuthors();
     }
+
+    /**
+     * @param int $idauthor
+     * @return array
+     * @throws ElementNotFoundException
+     */
+    public function getAuthor($idauthor)
+    {
+        $obtainedData = $this->authorMapper->getAuthorById($idauthor);
+        if (is_null($obtainedData)||!$obtainedData) throw new ElementNotFoundException("The author does not exist");
+        return $obtainedData;
+    }
+
 }
 
 ?>
