@@ -12,12 +12,11 @@ app.service("authorService", ['$http', 'API', function ($http, API) {
         // Obtener detalles de un libro
         getAuthorDetails: function ($id_author, onSuccess, onFail) {
             $http({
-                url: API + '/getAuthorDetails',
-                method: "GET",
-                params: {
-                    idauthor: $id_author
-                }
+                url: API + '/getAuthorDetails/'+$id_author,
+                method: "GET"
             }).then(onSuccess, onFail);
+
+            //mira
         }
     };
 
