@@ -40,8 +40,10 @@ app.controller("ModalShowDetailsBookCntr",
             };
 
             $scope.addBook = function () {
-                bookService.addBook($scope.title, $scope.author_data, $scope.language,
-                    $scope.year,
+                bookService.addBook(
+                    $scope.title, $scope.author_data, $scope.year,
+                    $scope.language, $scope.format, $scope.edition, $scope.publisher,
+                    $scope.summary, $scope.notes,
                     function (data) {
                         console.log(data);
                         $rootScope.$broadcast('books');

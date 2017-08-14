@@ -4,7 +4,7 @@
         <form name="newBookForm" action="">
             <div class="modal-header">
                 <div class="input-group input-group-lg">
-                    <span class="input-group-addon" id="sizing-addon1">Title</span>
+                    <span class="input-group-addon" id="sizing-addon1">Title*</span>
                     <input ng-model="title" type="text" class="form-control" placeholder="Write a title..."
                            aria-describedby="sizing-addon1" value="" autofocus required>
                 </div>
@@ -18,37 +18,37 @@
                         <span class="label label-default"></span>
                         <ul class="list-group">
                             <li class="list-group-item list-group-item-edit">
-                                <label class="details_label control-label" for="author_data">Author</label>
+                                <label class="details_label control-label" for="author_data">Author*</label>
                                 <input ng-model="author_data" id="author_data" type="text" class="form-control form-book-edit"
                                        placeholder="Author..."
                                        aria-describedby="basic-addon1" value="" autofocus required>
                             </li>
                             <li class="list-group-item list-group-item-edit">
-                                <label class="details_label" for="year">Year</label>
-                                <input ng-model="year" id="year" type="text" class="form-control form-book-edit" placeholder="Year..."
+                                <label class="details_label" for="year">Year*</label>
+                                <input ng-model="year" id="year" type="number" min="0" max="9999" class="form-control form-book-edit" placeholder="Year..."
                                        aria-describedby="basic-addon1" value="" autofocus required>
                             </li>
                             <li class="list-group-item list-group-item-edit">
-                                <label class="details_label" for="language">Language</label>
+                                <label class="details_label" for="language">Language*</label>
                                 <input ng-model="language" id="language" type="text" class="form-control form-book-edit"
                                        placeholder="Language..."
                                        aria-describedby="basic-addon1" value="" autofocus required>
                             </li>
                             <li class="list-group-item list-group-item-edit">
-                                <label class="details_label" for="format">Format</label>
-                                <input id="format" type="text" class="form-control form-book-edit"
-                                       placeholder="Publisher..."
+                                <label class="details_label" for="publisher">Format</label>
+                                <input ng-model="format" id="format" type="text" class="form-control form-book-edit"
+                                       placeholder="Format..."
                                        aria-describedby="basic-addon1" value="">
                             </li>
                             <li class="list-group-item list-group-item-edit">
                                 <label class="details_label" for="edition">Editon</label>
-                                <input id="edition" type="text" class="form-control form-book-edit"
+                                <input ng-model="edition" id="edition" type="text" class="form-control form-book-edit"
                                        placeholder="Edition..."
                                        aria-describedby="basic-addon1" value="">
                             </li>
                             <li class="list-group-item list-group-item-edit">
                                 <label class="details_label" for="publisher">Publisher</label>
-                                <input id="publisher" type="text" class="form-control form-book-edit"
+                                <input ng-model="publisher" id="publisher" type="text" class="form-control form-book-edit"
                                        placeholder="Publisher..."
                                        aria-describedby="basic-addon1" value="">
                             </li>
@@ -64,7 +64,7 @@
                         <div class="panel panel-default">
                             <div class="panel-heading">Summary</div>
                             <div class="panel-body">
-                                <textarea class="form-control" rows="3"></textarea>
+                                <textarea ng-model="summary" class="form-control" rows="3" placeholder="Write the summary..."></textarea>
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                         <div class="panel panel-info">
                             <div class="panel-heading">Notes</div>
                             <div class="panel-body">
-                                <textarea class="form-control" rows="3"></textarea>
+                                <textarea ng-model="notes" class="form-control" rows="3" placeholder="Write some notes..."></textarea>
                             </div>
                         </div>
                     </div>

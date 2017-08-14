@@ -33,12 +33,18 @@ app.service("bookService", ['$http', 'API', function ($http, API) {
                 $lent: $lent
             }).then(onSuccess, onFail);
         },
-        addBook: function ($title, $author_data, $language, $year, onSuccess, onFail) {
+        addBook: function ($title, $author_data, $year, $language, $format,
+                           $edition, $publisher, $summary, $notes, onSuccess, onFail) {
             $http.post(API + '/addBook', {
                 title: $title,
                 author_data: $author_data,
-                language: $language,
                 year: $year,
+                language: $language,
+                format: $format,
+                edition: $edition,
+                publisher: $publisher,
+                summary: $summary,
+                notes: $notes,
                 lent: 0
             }).then(onSuccess, onFail);
         },
