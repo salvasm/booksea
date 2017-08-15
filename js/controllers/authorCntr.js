@@ -4,18 +4,6 @@ app.controller("authorCntr",
     ['$scope', '$rootScope', '$location', 'authorService', '$uibModal',
         function ($scope, $rootScope, $location, authorService, $uibModal) {
 
-    // Obtenemos todos los autores
-    $scope.getAuthors = function () {
-        authorService.getAuthors(function (response) {
-            console.log(response.data);
-            $scope.authors = response.data;
-        }, function (error) {
-            console.log(error);
-        });
-    };
-
-    // Obtenemos un autor
-
 
 /*    //Abrir modal
     $scope.openNewAuthor = function (size, $author) {

@@ -25,14 +25,12 @@ app.controller("bookCntr",
                 bookService.getBooks(function (response) {
                     $scope.books = response.data;
 
+                    // For each Book add complete author information
                     angular.forEach($scope.books, function (book) {
                         $scope.idauthor = book.author_data;
 
                         authorService.getAuthorDetails($scope.idauthor, function (response) {
-                            //!!AQUI!! --- * $scope.books = response.data; * ---
                             book.author = response.data;
-                            //este book es el que usas en el array y del que sacas el id del autor.
-                            // posible problema. Puede haber mas de un autor???
                         });
                     });
                     console.log(response.data);
@@ -41,7 +39,7 @@ app.controller("bookCntr",
                     console.log(error);
                 });
             };
-            // Okis... voy a ver si va ahora esta parte
+
             // Show modal to see Details of a Book
             $scope.getBookDetails = function ($book) {
                 var $modal = $uibModal.open({

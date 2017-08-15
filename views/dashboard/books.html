@@ -41,7 +41,7 @@
             <tbody>
             <tr ng-repeat="book in books.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:sortType:sortReverse | filter:searchBook ">
                 <td>{{book.title}}</td>
-                <td>( {{book.author_data}} ) - {{book.author}}</td>
+                <td><span ng-if="book.author['name']">{{book.author['name']}}</span></td>
                 <td ng-switch on="book.lent" class="text-center">
                     <span ng-switch-when="0">
                         <i class="fa fa-square-o" aria-hidden="true" title="No lent" uib-tooltip="Not lent"></i>

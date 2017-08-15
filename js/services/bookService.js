@@ -37,9 +37,9 @@ app.service("bookService", ['$http', 'API', function ($http, API) {
                            $edition, $publisher, $summary, $notes, onSuccess, onFail) {
             $http.post(API + '/addBook', {
                 title: $title,
-                author_data: $author_data,
+                author_data: $author_data.idauthor,
                 year: $year,
-                language: $language,
+                language: $language.idlanguages,
                 format: $format,
                 edition: $edition,
                 publisher: $publisher,

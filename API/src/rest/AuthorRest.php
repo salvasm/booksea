@@ -4,8 +4,8 @@ use booksea\controllers\AuthorCntr;
 use \Slim\Http\Request;
 use \Slim\Http\Response;
 
-$app->get('/getAuthors', 'getAuthors');
-$app->get('/getAuthorDetails/{idauthor}', 'getAuthorDetails');
+$app->get('/authors', 'getAuthors');
+$app->get('/author/id/{idauthor}', 'getAuthorDetails');
 
 function getAuthors(Request $request, Response $response)
 {

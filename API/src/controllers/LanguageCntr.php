@@ -3,6 +3,7 @@
 namespace booksea\controllers;
 
 //use booksea\models\Language;
+use booksea\Exceptions\ElementNotFoundException;
 use booksea\mappers\LanguageMapper;
 
     /**
@@ -29,6 +30,18 @@ use booksea\mappers\LanguageMapper;
         public function listLanguages()
         {
             return $this->languageMapper->getAllLanguages();
+        }
+
+        /**
+         * @param int $idlanguage
+         * @return array
+         * @throws ElementNotFoundException
+         */
+        public function getLanguage($idlanguage)
+        {
+            $obtainedData = $this->languageMapper->getLanguageById($idlanguage);
+            if (is_null($obtainedData)||!$obtainedData) throw new ElementNotFoundException("The language does not exist");
+            return $obtainedData;
         }
     }
 

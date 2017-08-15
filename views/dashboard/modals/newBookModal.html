@@ -19,9 +19,13 @@
                         <ul class="list-group">
                             <li class="list-group-item list-group-item-edit">
                                 <label class="details_label control-label" for="author_data">Author*</label>
-                                <input ng-model="author_data" id="author_data" type="text" class="form-control form-book-edit"
-                                       placeholder="Author..."
-                                       aria-describedby="basic-addon1" value="" autofocus required>
+                                <!--<input ng-model="author_data" id="author_data" type="text" class="form-control form-book-edit"-->
+                                       <!--placeholder="Author..."-->
+                                       <!--aria-describedby="basic-addon1" value="" autofocus required>-->
+                                <input id="author_data" type="text" ng-model="author_data"
+                                       placeholder="Search the author..."
+                                       uib-typeahead="item as item.name for item in allAuthors | filter:{name:$viewValue} | limitTo:8"
+                                       class="form-control form-book-edit" autocomplete="off" autofocus required>
                             </li>
                             <li class="list-group-item list-group-item-edit">
                                 <label class="details_label" for="year">Year*</label>
@@ -30,9 +34,13 @@
                             </li>
                             <li class="list-group-item list-group-item-edit">
                                 <label class="details_label" for="language">Language*</label>
-                                <input ng-model="language" id="language" type="text" class="form-control form-book-edit"
-                                       placeholder="Language..."
-                                       aria-describedby="basic-addon1" value="" autofocus required>
+                                <!--<input ng-model="language" id="language" type="text" class="form-control form-book-edit"-->
+                                       <!--placeholder="Language..."-->
+                                       <!--aria-describedby="basic-addon1" value="" autofocus required>-->
+                                <input id="language" type="text" ng-model="language"
+                                       placeholder="Search the language..."
+                                       uib-typeahead="item as item.name for item in allLanguages | filter:{name:$viewValue} | limitTo:8"
+                                       class="form-control form-book-edit" autocomplete="off" autofocus required>
                             </li>
                             <li class="list-group-item list-group-item-edit">
                                 <label class="details_label" for="format">Format</label>

@@ -4,7 +4,7 @@ app.service("authorService", ['$http', 'API', function ($http, API) {
     return {
         getAuthors: function (onSuccess, onFail) {
             $http({
-                url: API + '/getAuthors',
+                url: API + '/authors',
                 method: "GET",
                 params: {'foobar': new Date().getTime()}
             }).then(onSuccess, onFail);
@@ -12,11 +12,9 @@ app.service("authorService", ['$http', 'API', function ($http, API) {
         // Obtener detalles de un libro
         getAuthorDetails: function ($id_author, onSuccess, onFail) {
             $http({
-                url: API + '/getAuthorDetails/'+$id_author,
+                url: API + '/author/id/'+$id_author,
                 method: "GET"
             }).then(onSuccess, onFail);
-
-            //mira
         }
     };
 
