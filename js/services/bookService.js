@@ -5,7 +5,7 @@ app.service("bookService", ['$http', 'API', function ($http, API) {
         // Obtener todos los libros
         getBooks: function (onSuccess, onFail) {
             $http({
-                url: API + '/getBooks',
+                url: API + '/books',
                 method: "GET",
                 params: {'foobar': new Date().getTime()}
             }).then(onSuccess, onFail);
@@ -13,11 +13,8 @@ app.service("bookService", ['$http', 'API', function ($http, API) {
         // Obtener detalles de un libro
         getBookDetails: function ($id_book, onSuccess, onFail) {
             $http({
-                url: API + '/getBookDetails',
-                method: "GET",
-                params: {
-                    idbook: $id_book
-                }
+                url: API + '/book/id/'+$id_book,
+                method: "GET"
             }).then(onSuccess, onFail);
         },
         editBook: function ($book_id, $book_title, $book_summary,

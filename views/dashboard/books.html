@@ -39,7 +39,10 @@
             </tr>
             </thead>
             <tbody>
+            <td colspan="4" ng-show="books.length=== 0" class="bg-info text-center text-info">There is no books!</td>
             <tr ng-repeat="book in books.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage)) | orderBy:sortType:sortReverse | filter:searchBook ">
+
+
                 <td>{{book.title}}</td>
                 <td><span ng-if="book.author['name']">{{book.author['name']}}</span></td>
                 <td ng-switch on="book.lent" class="text-center">
@@ -70,11 +73,10 @@
         </table>
     </div>
 
-    <div class="col-sm-12 text-center">
+    <div class="col-sm-12 text-center" ng-hide="books.length=== 0">
         <ul uib-pagination total-items="books.length" items-per-page="itemsPerPage" ng-model="currentPage"></ul>
     </div>
-
-    <div class="col-xs-2">
+    <div class="col-sm-2" ng-hide="books.length=== 0">
         <select ng-model="viewby" class="form-control" ng-change="setItemsPerPage(viewby)">
             <option>1</option>
             <option>3</option>
@@ -86,6 +88,7 @@
             <option>50</option>
         </select>
     </div>
+
     <!--<pre>Page: {{currentPage}} / {{getNumPages(books.length)}}</pre>-->
 </div>
 

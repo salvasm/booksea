@@ -25,6 +25,7 @@ app.controller("ModalShowDetailsBookCntr",
                     console.log("Error: " + response.data);
                 });
 
+                // Save data to show
                 if (typeof Book !== "undefined") {
                     $scope.created = Book.created;
                     $scope.edition = Book.edition;

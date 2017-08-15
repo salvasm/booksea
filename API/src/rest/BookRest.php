@@ -4,11 +4,11 @@ use booksea\controllers\BookCntr;
 use \Slim\Http\Response;
 use \Slim\Http\Request;
 
-$app->get('/getBooks', 'getBooks');
+$app->get('/books', 'getBooks');
 $app->post('/addBook', 'addBook');
 $app->put('/updateBook', 'updateBook');
 $app->put('/removeBook', 'removeBook'); // con delete trabajar igual que get
-$app->get('/getBookDetails/{idbook}', 'getBookDetails');
+$app->get('/book/id/{idbook}', 'getBookDetails');
 
 function getBooks(Request $request, Response $response)
 {
