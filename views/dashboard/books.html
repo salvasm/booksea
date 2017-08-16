@@ -4,17 +4,23 @@
     <h1 class="page-header">Books</h1>
 
     <form class="form-inline">
+        <div class="input-group col-sm-8">
+            <div class="input-group-addon"><i class="fa fa-search"></i></div>
+            <input type="text" class="form-control input-lg" placeholder="Search a book" ng-model="searchBook">
+        </div>
 
-            <div class="input-group col-sm-10">
-                <div class="input-group-addon"><i class="fa fa-search"></i></div>
-                <input type="text" class="form-control input-lg" placeholder="Search a book" ng-model="searchBook">
-            </div>
+        <div class="input-group col-sm-2">
+            <div class="input-group-addon"><i class="fa fa-list-ol"></i></div>
+            <input type="text" class="form-control input-lg" placeholder="#Books" ng-model="viewby" class="form-control input-lg" ng-change="setItemsPerPage(viewby)">
+        </div>
+
         <button type="button" ng-click="addBook()" class="btn btn-primary btn-lg pull-right">
             <span class="fa fa-plus-circle" aria-hidden="true"></span>
             Add new book
         </button>
     </form>
 
+    <br>
 
     <div class="table-responsive">
         <table class="table table-striped" ng-init="getBooks()">
@@ -76,24 +82,10 @@
     <div class="col-sm-12 text-center" ng-hide="books.length=== 0">
         <ul uib-pagination total-items="books.length" items-per-page="itemsPerPage" ng-model="currentPage"></ul>
     </div>
-    <div class="col-sm-2" ng-hide="books.length=== 0">
-        <select ng-model="viewby" class="form-control" ng-change="setItemsPerPage(viewby)">
-            <option>1</option>
-            <option>3</option>
-            <option>5</option>
-            <option>10</option>
-            <option>20</option>
-            <option>30</option>
-            <option>40</option>
-            <option>50</option>
-        </select>
-    </div>
-
     <!--<pre>Page: {{currentPage}} / {{getNumPages(books.length)}}</pre>-->
 
 </div>
 
-<!--TODO: Maquetar selección de número de elementos por página-->
 <!--TODO: Modificar menú superior de acceso y control de usuario-->
 <!--IMPORTANT!-->
 <!--TODO: Implementar modificación de BOOKS-->
