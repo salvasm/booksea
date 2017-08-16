@@ -19,9 +19,6 @@
                         <ul class="list-group">
                             <li class="form-group list-group-item list-group-item-edit">
                                 <label class="details_label control-label" for="author_data">Author</label>
-                                <!--<select id="author_data" class="form-control form-book-edit"-->
-                                        <!--ng-options="item as item.name for item in allAuthors track by item.idauthor"-->
-                                        <!--ng-model="authorSelected" ng-change="change()"></select>-->
                                 <input id="author_data" type="text" ng-model="authorSelected"
                                        placeholder="Search the author..."
                                        uib-typeahead="item as item.name for item in allAuthors | filter:{name:$viewValue} | limitTo:8"
@@ -41,9 +38,9 @@
                             </li>
                             <li class="list-group-item list-group-item-edit">
                                 <label class="details_label" for="format">Format</label>
-                                <input id="format" type="text" class="form-control form-book-edit"
-                                       placeholder="Publisher..."
-                                       aria-describedby="basic-addon1" value="{{format}}">
+                                <select id="format" class="form-control form-book-edit"
+                                ng-options="item as item.acronym.concat(' - ' + item.name) for item in allFormats track by item.idformat"
+                                ng-model="formatSelected" ng-change="change()"></select>
                             </li>
                             <li class="list-group-item list-group-item-edit">
                                 <label class="details_label" for="edition">Editon</label>

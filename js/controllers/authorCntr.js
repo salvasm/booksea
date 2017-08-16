@@ -4,21 +4,16 @@ app.controller("authorCntr",
     ['$scope', '$rootScope', '$location', 'authorService', '$uibModal',
         function ($scope, $rootScope, $location, authorService, $uibModal) {
 
+    // Get authors (all)
+    $scope.getAuthors = function () {
+        authorService.getAuthors(function (response) {
+            $scope.authors = response.data;
+            console.log(response.data);
 
-/*    //Abrir modal
-    $scope.openNewAuthor = function (size, $author) {
-        $uibModal.open({
-            templateUrl: "views/dashboard/modals/confirmationModal.html",
-            controller: "ModalShowDetailsAuthorCntr",
-            size: size,
-            resolve: {
-                Items: function() //scope del modal
-                {
-                    return "Hola loko";
-                }
-            }
+        }, function (error) {
+            console.log(error);
         });
-    };*/
+    };
 
     //Show Details on Modal
     $scope.showAuthorDetails = function ($author) {
@@ -47,6 +42,12 @@ app.controller("authorCntr",
             }
         });
 
+    };
+
+    // Format Date Function
+    $scope.formatDate = function(date){
+        var dateOut = new Date(date);
+        return dateOut;
     };
 
 }]);

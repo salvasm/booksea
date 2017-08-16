@@ -1,8 +1,8 @@
 var app = angular.module("bookseaApp");
 
 app.controller("bookCntr",
-    ['$scope', '$rootScope', '$location', 'bookService', 'authorService', 'languageService', '$uibModal', '$log',
-        function ($scope, $rootScope, $location, bookService, authorService, languageService, $uibModal) {
+    ['$scope', '$rootScope', '$location', 'bookService', 'authorService', 'languageService', 'formatService', '$uibModal', '$log',
+        function ($scope, $rootScope, $location, bookService, authorService, languageService, formatService, $uibModal) {
 
             $scope.sortType = 'title'; // set the default sort type
             $scope.sortReverse = false;  // set the default sort order
@@ -29,6 +29,7 @@ app.controller("bookCntr",
                     angular.forEach($scope.books, function (book) {
                         $scope.idauthor = book.author_data;
                         $scope.idlanguage = book.language;
+                        $scope.idformat = book.format;
 
                         authorService.getAuthorDetails($scope.idauthor, function (response) {
                             book.author = response.data;
@@ -36,7 +37,12 @@ app.controller("bookCntr",
 
                         languageService.getLanguageDetails($scope.idlanguage, function (response) {
                             book.language_data = response.data;
-                        })
+                        });
+
+                        formatService.getFormatsDetails($scope.idformat, function (response) {
+                            book.format_data = response.data;
+                        });
+
                     });
                     console.log(response.data);
 

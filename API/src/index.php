@@ -17,6 +17,8 @@ include "rest/LanguageRest.php";
 include "rest/AuthorRest.php";
 // Genres
 include "rest/GenreRest.php";
+// Formats
+include "rest/FormatRest.php";
 
 $app->get('/', function (Request $request, Response $response) {
     $response->getBody()->write("BookSea API 1.0.0");

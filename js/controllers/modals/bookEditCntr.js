@@ -1,8 +1,8 @@
 var app = angular.module("bookseaApp");
 
 app.controller("ModalShowDetailsBookCntr",
-    ['$scope', '$rootScope', '$filter', '$uibModalInstance', '$uibModal', 'bookService', 'authorService', 'languageService', 'Book',
-        function ($scope, $rootScope, $filter, $uibModalInstance, $uibModal, bookService, authorService, languageService, Book) {
+    ['$scope', '$rootScope', '$filter', '$uibModalInstance', '$uibModal', 'bookService', 'authorService', 'languageService', 'formatService', 'Book',
+        function ($scope, $rootScope, $filter, $uibModalInstance, $uibModal, bookService, authorService, languageService, formatService, Book) {
 
             $scope.init = function () {
                 // Load all the authors on DB to the form
@@ -25,11 +25,21 @@ app.controller("ModalShowDetailsBookCntr",
                     console.log("Error: " + response.data);
                 });
 
+                // Load all the formats on DB to the form
+                formatService.getFormats(function (response) {
+                    $scope.allFormats = response.data;
+
+                    if (typeof Book !== "undefined")
+                        $scope.formatSelected = $filter('filter')($scope.allFormats, {idformat: Book.format})[0];
+                }, function (response) {
+                    console.log("Error: " + response.data);
+                });
+
                 // Save data to show
                 if (typeof Book !== "undefined") {
                     $scope.created = Book.created;
                     $scope.edition = Book.edition;
-                    $scope.format = Book.format;
+                    $scope.format = Book.format_data;
                     $scope.book_id = Book.idbook;
                     $scope.isbn10 = Book.isbn10;
                     $scope.isbn13 = Book.isbn13;
