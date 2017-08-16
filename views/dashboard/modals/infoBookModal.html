@@ -15,24 +15,32 @@
                         <span id="author_data">{{ authorSelected.name }}</span>
                     </li>
                     <li class="list-group-item list-group-item-edit">
-                        <label class="details_label" for="author_data">Year:</label>
-                        <span id="author_data">{{ year }}</span>
+                        <label class="details_label" for="year">Year:</label>
+                        <span id="year">{{ year }}</span>
                     </li>
                     <li class="list-group-item list-group-item-edit">
-                        <label class="details_label" for="author_data">Language:</label>
-                        <span id="author_data">{{ languageSelected.name }}</span>
+                        <label class="details_label" for="language">Language:</label>
+                        <span id="language">{{ languageSelected.name }}</span>
                     </li>
-                    <li class="list-group-item list-group-item-edit">
-                        <label class="details_label" for="author_data">Format:</label>
-                        <span id="author_data">{{ format }}</span>
+                    <li class="list-group-item list-group-item-edit" ng-show="isbn13 != null">
+                        <label class="details_label" for="isbn13">ISBN-13:</label>
+                        <span id="isbn13">{{ isbn13 }}</span>
                     </li>
-                    <li class="list-group-item list-group-item-edit">
-                        <label class="details_label" for="author_data">Editon:</label>
-                        <span id="author_data">{{ edition }}</span>
+                    <li class="list-group-item list-group-item-edit" ng-show="isbn10 != null">
+                        <label class="details_label" for="isbn10">ISBN-10:</label>
+                        <span id="isbn10">{{ isbn10 }}</span>
                     </li>
-                    <li class="list-group-item list-group-item-edit">
-                        <label class="details_label" for="author_data">Publisher:</label>
-                        <span id="author_data">{{ publisher}}</span>
+                    <li class="list-group-item list-group-item-edit" ng-show="format != null">
+                        <label class="details_label" for="format">Format:</label>
+                        <span id="format">{{ format }}</span>
+                    </li>
+                    <li class="list-group-item list-group-item-edit" ng-show="edition != null">
+                        <label class="details_label" for="edition">Editon:</label>
+                        <span id="edition">{{ edition }}</span>
+                    </li>
+                    <li class="list-group-item list-group-item-edit" ng-show="publisher != null">
+                        <label class="details_label" for="publisher">Publisher:</label>
+                        <span id="publisher">{{ publisher}}</span>
                     </li>
                 </ul>
             </div>

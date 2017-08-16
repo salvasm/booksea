@@ -73,13 +73,15 @@ app.controller("ModalShowDetailsBookCntr",
 
             $scope.addBook = function () {
                 bookService.addBook(
-                    $scope.title, $scope.author_data, $scope.year,
-                    $scope.language, $scope.format, $scope.edition, $scope.publisher,
-                    $scope.summary, $scope.notes,
+                    $scope.title, $scope.author_data, $scope.year, $scope.isbn13, $scope.isbn10,
+                    $scope.language, $scope.notes, $scope.summary, $scope.publisher, $scope.format,
+                    $scope.edition, $scope.edition,
+
                     function (data) {
                         console.log(data);
                         // Close modal after save
                         $uibModalInstance.dismiss();
+
                         $rootScope.$broadcast('books');
                     }, function (error) {
                         console.log(error);

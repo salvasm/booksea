@@ -43,13 +43,25 @@
                                        class="form-control form-book-edit" autocomplete="off" autofocus required>
                             </li>
                             <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="isbn13">ISBN13</label>
+                                <input ng-model="isbn13" id="isbn13" type="text" class="form-control form-book-edit"
+                                placeholder="Isbn13..."
+                                aria-describedby="basic-addon1" value="" autofocus required>
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
+                                <label class="details_label" for="isbn10">ISBN10</label>
+                                <input ng-model="isbn10" id="isbn10" type="text" class="form-control form-book-edit"
+                                       placeholder="Isbn10..."
+                                       aria-describedby="basic-addon1" value="" autofocus required>
+                            </li>
+                            <li class="list-group-item list-group-item-edit">
                                 <label class="details_label" for="format">Format</label>
                                 <input ng-model="format" id="format" type="text" class="form-control form-book-edit"
                                        placeholder="Format..."
                                        aria-describedby="basic-addon1" value="">
                             </li>
                             <li class="list-group-item list-group-item-edit">
-                                <label class="details_label" for="edition">Editon</label>
+                                <label class="details_label" for="edition">Edition</label>
                                 <input ng-model="edition" id="edition" type="text" class="form-control form-book-edit"
                                        placeholder="Edition..."
                                        aria-describedby="basic-addon1" value="">
@@ -96,5 +108,7 @@
 
             </div>
         </form>
+
+
 
 </div>

@@ -65,12 +65,35 @@ function addBook(Request $request, Response $response)
         if (isset($body["year"])) {
             $year = $body["year"];
         }
+        if (isset($body["isbn13"])) {
+            $isbn13 = $body["isbn13"];
+        }
+        if (isset($body["isbn10"])) {
+            $isbn10 = $body["isbn10"];
+        }
         if (isset($body["language"])) {
             $language = $body["language"];
+        }
+        if (isset($body["notes"])) {
+            $notes = $body["notes"];
+        }
+        if (isset($body["summary"])) {
+            $summary = $body["summary"];
+        }
+        if (isset($body["publisher"])) {
+            $publisher = $body["publisher"];
+        }
+        if (isset($body["format"])) {
+            $format = $body["format"];
+        }
+        if (isset($body["edition"])) {
+            $edition = $body["edition"];
         }
         if (isset($body["lent"])) {
             $lent = $body["lent"];
         }
+
+
         $cntr = new BookCntr();
         $cntr->addBook($title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $updated, $publisher, $format, $edition, $lent);
         $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been inserted correctly"), JSON_UNESCAPED_UNICODE));

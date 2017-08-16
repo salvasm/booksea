@@ -30,18 +30,21 @@ app.service("bookService", ['$http', 'API', function ($http, API) {
                 $lent: $lent
             }).then(onSuccess, onFail);
         },
-        addBook: function ($title, $author_data, $year, $language, $format,
-                           $edition, $publisher, $summary, $notes, onSuccess, onFail) {
+        addBook: function ($title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary,
+                           $publisher, $format, $edition, $lent, onSuccess, onFail) {
+
             $http.post(API + '/addBook', {
                 title: $title,
                 author_data: $author_data.idauthor,
                 year: $year,
+                isbn13: $isbn13,
+                isbn10: $isbn10,
                 language: $language.idlanguages,
+                notes: $notes,
+                summary: $summary,
+                publisher: $publisher,
                 format: $format,
                 edition: $edition,
-                publisher: $publisher,
-                summary: $summary,
-                notes: $notes,
                 lent: 0
             }).then(onSuccess, onFail);
         },
