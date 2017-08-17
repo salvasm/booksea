@@ -4,11 +4,11 @@ use booksea\controllers\BookCntr;
 use \Slim\Http\Response;
 use \Slim\Http\Request;
 
-$app->get('/books', 'getBooks');
-$app->post('/addBook', 'addBook');
-$app->put('/updateBook', 'updateBook');
-$app->put('/removeBook', 'removeBook'); // con delete trabajar igual que get
-$app->get('/book/id/{idbook}', 'getBookDetails');
+$app->get('/books', 'getBooks'); // Get the books URI
+$app->post('/addBook', 'addBook'); // Create a book URI
+$app->put('/book/id/{idbook}', 'updateBook'); // Update a book URI
+$app->put('/removeBook', 'removeBook'); // Delete a book URI
+$app->get('/book/id/{idbook}', 'getBookDetails'); // Get a book details URI
 
 function getBooks(Request $request, Response $response)
 {
@@ -93,7 +93,6 @@ function addBook(Request $request, Response $response)
             $lent = $body["lent"];
         }
 
-
         $cntr = new BookCntr();
         $cntr->addBook($title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $updated, $publisher, $format, $edition, $lent);
         $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been inserted correctly"), JSON_UNESCAPED_UNICODE));
@@ -123,7 +122,7 @@ function removeBook (Request $request, Response $response)
 function updateBook (Request $request, Response $response)
 {
     try {
-        $idbook = null;
+//        $idbook = null;
         $title = null;
         $author_data = null;
         $year = null;
@@ -138,9 +137,7 @@ function updateBook (Request $request, Response $response)
         $edition = null;
         $lent = null;
         $body = $request->getParsedBody();
-        if (isset($body["idbook"])) {
-            $idbook = $body["idbook"];
-        }
+
         if (isset($body["title"])) {
             $title = $body["title"];
         }
@@ -150,15 +147,37 @@ function updateBook (Request $request, Response $response)
         if (isset($body["year"])) {
             $year = $body["year"];
         }
+        if (isset($body["isbn13"])) {
+            $isbn13 = $body["isbn13"];
+        }
+        if (isset($body["isbn10"])) {
+            $isbn10 = $body["isbn10"];
+        }
         if (isset($body["language"])) {
             $language = $body["language"];
         }
-        if (isset($body["lent"])) {
-            $lent = $body["lent"];
+        if (isset($body["notes"])) {
+            $notes = $body["notes"];
         }
+        if (isset($body["summary"])) {
+            $summary = $body["summary"];
+        }
+        if (isset($body["publisher"])) {
+            $publisher = $body["publisher"];
+        }
+        if (isset($body["format"])) {
+            $format = $body["format"];
+        }
+        if (isset($body["edition"])) {
+            $edition = $body["edition"];
+        }
+
+
+        $idbook = $request->getAttribute("idbook");
         $cntr = new BookCntr();
         $cntr->updateBook($idbook, $title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $updated, $publisher, $format, $edition, $lent);
         $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode(array("msg"=>"Book has been modified correctly"), JSON_UNESCAPED_UNICODE));
+
     } catch (Exception $e) {
         $response->withHeader('Content-type', 'application/json')->withStatus(400)->getBody()->write(json_encode(array("error" => $e->getMessage())));
         return $response;

@@ -82,8 +82,13 @@ use booksea\mappers\BookMapper;
          */
         public function updateBook($idbook, $title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $updated, $publisher, $format, $edition, $lent)
         {
+
             $actualBook = Book::convertDataBaseToObject($this->getBook($idbook));
-            $book = new Book($idbook, $title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, $updated, $publisher, $format, $edition, $lent);
+
+            echo "<pre>";
+            print_r($actualBook);
+            echo "</pre>";
+            $book = new Book($idbook, $title, $author_data, $year, $isbn13, $isbn10, $language, $notes, $summary, "2014-12-20T21:17:56.891000Z", $publisher, $format, $edition, $lent);
 
             $actualBook->merge($book);
             if (!($actualBook->isComplete())) throw new IncompleteDataException("The Book data is not complete");
