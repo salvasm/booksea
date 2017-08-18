@@ -1,7 +1,7 @@
 # BookSea
 University of Vigo: Final Project Degree. 
 
-Management API REST application for a personal book collection.
+API REST Management application for a personal book collection.
 
 ## Built With
 
