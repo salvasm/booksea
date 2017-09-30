@@ -13,9 +13,14 @@ function login(Request $request, Response $response)
 {
     try {
         $cntr = new UserCntr();
-        $users = $cntr->listUsers();
 
-        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode($users, JSON_UNESCAPED_UNICODE));
+        $body = $request->getParsedBody();
+        $username = $body["username"];
+        $password = $body["password"];
+
+        $login = $cntr->login($username, $password);
+
+        $response->withHeader('Content-type', 'application/json')->getBody()->write(json_encode($login, JSON_UNESCAPED_UNICODE));
         return $response;
     } catch (Exception $e) {
         $response->withHeader('Content-type', 'application/json')->withStatus(400)->getBody()->write(json_encode(array("error" => $e->getMessage())));
