@@ -1,10 +1,12 @@
 <?php
 
-namespace experimentWebTool\controllers;
+namespace booksea\controllers;
 
 use Exception;
 use booksea\Exceptions\TokenException;
 use booksea\models\User;
+
+use Firebase\JWT\JWT;
 
 date_default_timezone_set('Europe/Madrid');
 
@@ -36,7 +38,7 @@ class  JWTCntr
             "nbf" => time(),
             "exp" => time() + 43200
         );
-        return \JWT::encode($header, self::$SEC_KEY);
+        return JWT::encode($header, self::$SEC_KEY);
     }
 
     /**
@@ -49,9 +51,7 @@ class  JWTCntr
     public function checkToken($token)
     {
         try {
-            $jwt = ( array )\JWT::decode($token, self::$SEC_KEY, array(
-                'HS256'
-            ));
+            $jwt = ( array )JWT::decode($token, self::$SEC_KEY, array('HS256'));
             return new User($jwt['username'], null, $jwt['role']);
         } catch (Exception $e) {
             throw new TokenException($e->getMessage());

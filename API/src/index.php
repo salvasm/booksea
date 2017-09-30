@@ -36,7 +36,7 @@ $app->run();
 function checkToken()
 {
     $token = $_COOKIE ['jwtToken'];
-    $jwt = new JWTCntr ();
+    $jwt = new JWTCntr();
     $user = $jwt->checkToken($token);
     return $user;
 }

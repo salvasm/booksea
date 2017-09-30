@@ -4,7 +4,7 @@ use booksea\controllers\UserCntr;
 use \Slim\Http\Request;
 use \Slim\Http\Response;
 
-$app->get('/login', 'login');
+$app->post('/login', 'login');
 $app->get('/users', 'getUsers');
 $app->get('/user/{username}', 'getUserDetails');
 

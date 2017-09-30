@@ -18,16 +18,6 @@ use booksea\mappers\UserMapper;
 class UserCntr
 {
 
-    public function login($username, $password)
-    {
-        $userGet = $this->getUserProfile($username);
-        $user = User::convertDataBaseToObject($userGet);
-        if (!password_verify($password, $user->getPassword())) throw new WrongCredentialsException("The password is invalid");
-        if ($user->getRole() == "user") throw new AccessDeniedException("You don't have access yet");
-        $jwt = new JWTCntr ();
-        return $jwt->generateToken($user);
-    }
-
     /**
      * @var UserCntr Objeto que ejecuta las acciones de gestión de los usuarios sobre la base de datos.
      */
@@ -39,6 +29,28 @@ class UserCntr
     public function __construct()
     {
         $this->userMapper = new UserMapper();
+    }
+
+
+    /**
+     * Función encargada de las comprobaciones para el inicio de sesión en el sistema de un usuario
+     *
+     * @param string $username Nombre único de usuario que quiere iniciar sesión
+     * @param string $password Contraseña del usuario que pretente iniciar sesión
+     * @return string
+     * @throws \PDOException
+     * @throws AccessDeniedException
+     * @throws ElementNotFoundException
+     * @throws WrongCredentialsException
+     */
+    public function login($username, $password)
+    {
+        $userGet = $this->getUserProfile($username);
+        $user = User::convertDataBaseToObject($userGet);
+        if (!password_verify($password, $user->getPassword())) throw new WrongCredentialsException("The password is invalid");
+        //if ($user->getRole() == "user") throw new AccessDeniedException("You don't have access yet");
+        $jwt = new JWTCntr();
+        return $jwt->generateToken($user);
     }
 
     public function listUsers()
