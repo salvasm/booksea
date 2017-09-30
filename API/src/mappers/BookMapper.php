@@ -93,11 +93,12 @@ class BookMapper extends Mapper
         $language = $book->getLanguage();
         $notes = $book->getNotes();
         $summary = $book->getSummary();
-        $updated = $book->getUpdated();
+        $updated = $book->getUpdated()->format('Y-m-d');
         $publisher = $book->getPublisher();
         $format = $book->getFormat();
         $edition = $book->getEdition();
         $lent = $book->getLent();
+
 
         $sql = "UPDATE book SET title=:title, author_data=:author, year=:year, isbn13=:isbn13, isbn10=:isbn10,
                 language=:language, notes=:notes, summary=:summary, updated=:updated, publisher=:publisher,

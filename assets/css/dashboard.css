@@ -7,7 +7,6 @@ body {
     padding-top: 50px;
 }
 
-
 /*
  * Global add-ons
  */
@@ -33,6 +32,7 @@ body {
 .sidebar {
     display: none;
 }
+
 @media (min-width: 768px) {
     .sidebar {
         position: fixed;
@@ -55,17 +55,18 @@ body {
     margin-bottom: 20px;
     margin-left: -20px;
 }
+
 .nav-sidebar > li > a {
     padding-right: 20px;
     padding-left: 20px;
 }
+
 .nav-sidebar > .active > a,
 .nav-sidebar > .active > a:hover,
 .nav-sidebar > .active > a:focus {
     color: #fff;
     background-color: #428bca;
 }
-
 
 /*
  * Main content
@@ -74,16 +75,17 @@ body {
 .main {
     padding: 20px;
 }
+
 @media (min-width: 768px) {
     .main {
         padding-right: 40px;
         padding-left: 40px;
     }
 }
+
 .main .page-header {
     margin-top: 0;
 }
-
 
 /*
  * Placeholder dashboard ideas
@@ -93,17 +95,19 @@ body {
     margin-bottom: 30px;
     text-align: center;
 }
+
 .placeholders h4 {
     margin-bottom: 0;
 }
+
 .placeholder {
     margin-bottom: 20px;
 }
+
 .placeholder img {
     display: inline-block;
     border-radius: 50%;
 }
-
 
 /* Modal Book */
 .img-thumbnail {
@@ -129,4 +133,46 @@ body {
     float: inherit;
     width: 73%;
     display: inline;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+    font-weight: 700;
+    font-size: 32px;
+    text-shadow: 0 1px 0 #ccc,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0, 0, 0, .1),
+    0 0 5px rgba(0, 0, 0, .1),
+    0 1px 3px rgba(0, 0, 0, .3),
+    0 3px 5px rgba(0, 0, 0, .2),
+    0 5px 10px rgba(0, 0, 0, .25),
+    0 10px 10px rgba(0, 0, 0, .2),
+    0 20px 20px rgba(0, 0, 0, .15);
+}
+
+.navbar-inverse .navbar-brand:hover {
+    /*color: #7ab5ff;*/
+    /*-webkit-transition: background-color 300ms linear, color 0.5s linear;*/
+    /*-moz-transition: background-color 300ms linear, color 0.5s linear;*/
+    /*-o-transition: background-color 300ms linear, color 0.5s linear;*/
+    /*-ms-transition: background-color 300ms linear, color 0.5s linear;*/
+    /*transition: background-color 300ms linear, color 0.3s linear;*/
+
+
+}
+
+.navbar-inverse {
+    background: #17457f; /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(left top, #17457f, #7ab5ff); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(bottom right, #17457f, #7ab5ff); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(bottom right, #17457f, #7ab5ff); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(to bottom right, #17457f, #7ab5ff); /* Standard syntax */
+}
+
+.nav>li>a:hover {
+    color: #fff;
+    background-color: #256FCC;
 }

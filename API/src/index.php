@@ -1,14 +1,17 @@
 <?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
 use \Psr\Http\Message\ServerRequestInterface as Request;
 use \Psr\Http\Message\ResponseInterface as Response;
 
 use booksea\controllers\JWTCntr;
 
 
-require __DIR__ . '/../vendor/autoload.php';
-
 $app = new \Slim\App();
 
+// Users
+include "rest/UserRest.php";
 // Books
 include "rest/BookRest.php";
 // Languages
@@ -26,3 +29,14 @@ $app->get('/', function (Request $request, Response $response) {
 });
 
 $app->run();
+
+/**
+ * @return \booksea\models\User
+ */
+function checkToken()
+{
+    $token = $_COOKIE ['jwtToken'];
+    $jwt = new JWTCntr ();
+    $user = $jwt->checkToken($token);
+    return $user;
+}

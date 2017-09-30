@@ -3,7 +3,7 @@
 namespace experimentWebTool\controllers;
 
 use Exception;
-//use booksea\Exceptions\TokenException;
+use booksea\Exceptions\TokenException;
 use booksea\models\User;
 
 date_default_timezone_set('Europe/Madrid');
@@ -28,9 +28,8 @@ class  JWTCntr
     public static function generateToken($user)
     {
         $header = array(
-            "iss" => $user->getUsername(),
+            "username" => $user->getUsername(),
             "name" => $user->getName(),
-            "nick" => $user->getNick(),
             "role" => $user->getRole(),
             "email" => $user->getEmail(),
             "iat" => time(),
@@ -53,7 +52,7 @@ class  JWTCntr
             $jwt = ( array )\JWT::decode($token, self::$SEC_KEY, array(
                 'HS256'
             ));
-            return new User($jwt['iss'], null, $jwt['role']);
+            return new User($jwt['username'], null, $jwt['role']);
         } catch (Exception $e) {
             throw new TokenException($e->getMessage());
         }

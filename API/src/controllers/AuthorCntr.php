@@ -15,7 +15,7 @@ use booksea\mappers\AuthorMapper;
 class AuthorCntr
 {
     /**
-     * @var AuthorMapper AuthorCntr Objeto que ejecuta las acciones de gestión de los autores sobre la base de datos.
+     * @var AuthorCntr Objeto que ejecuta las acciones de gestión de los autores sobre la base de datos.
      */
     private $authorMapper;
 

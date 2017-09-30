@@ -92,7 +92,8 @@ class Book
      */
     public function __construct($idbook = null, $title = null, $author_data = null, $year = null, $isbn13 = null,
                                 $isbn10 = null, $language = null, $notes = null, $summary = null, $created = null,
-                                $updated = null, $publisher = null, $format = null, $edition = null, $lent = null ) {
+                                $updated = null, $publisher = null, $format = null, $edition = null, $lent = null)
+    {
         $this->setIdBook($idbook);
         $this->setTitle($title);
         $this->setAuthorData($author_data);
@@ -356,10 +357,10 @@ class Book
     public function isComplete()
     {
         return (!is_null($this->getTitle()) &&
-                !is_null($this->getAuthorData()) &&
-                !is_null($this->getLanguage()) &&
-                !is_null($this->getLent())
-               );
+            !is_null($this->getAuthorData()) &&
+            !is_null($this->getLanguage()) &&
+            !is_null($this->getLent())
+        );
     }
 
     /**
