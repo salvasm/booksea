@@ -1,0 +1,51 @@
+
+<div class="container">
+    <div class="login-box">
+        <div class="login-form row">
+            <div class="col-sm-12 text-center login-header">
+                <i class="login-logo fa icon-bunny5 fa-5x"></i>
+                <h4 class="login-tittle">Login</h4>
+            </div>
+            <div class="col-sm-12">
+                <div class="login-body">
+                    <form name="loginForm">
+                        <div class="control">
+                            <input type="text" class="form-control" placeholder="Username" ng-model="username" required
+                                   autofocus/>
+                        </div>
+                        <div class="control">
+                            <input type="password" class="form-control" placeholder="Password" ng-model="password"
+                                   required autofocus/>
+                        </div>
+                        <div class="login-button text-center">
+                            <button class="btn btn-primary" type="submit" ng-disabled="!loginForm.$valid"
+                                    ng-click="login()">Sign in
+                            </button>
+                        </div>
+                    </form>
+                </div>
+                <div class="login-footer">
+                    <a href="#/register" class="btn btn-link text-right">Register</a>
+                </div>
+            </div>
+        </div>
+        <div ng-show="errorCode==1" class="alert alert-danger">
+            You don't have still permission to access.
+        </div>
+        <div ng-show="errorCode==2" class="alert alert-danger">
+            Invalid user or password.
+        </div>
+        <div ng-show="errorCode==3" class="alert alert-danger">
+            You must log in to access.
+        </div>
+        <div ng-show="errorCode==4" class="alert alert-danger">
+            Your token has expired.
+        </div>
+        <div ng-show="errorCode==5" class="alert alert-danger">
+            Token error.
+        </div>
+        <div ng-show="errorCode==6" class="alert alert-success">
+            User correctly created.
+        </div>
+    </div>
+</div>
